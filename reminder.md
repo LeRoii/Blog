@@ -237,3 +237,24 @@ String(String&& rhs)
 [ref3](http://blog.csdn.net/gg_18826075157/article/details/71889042)<br>
 
 
+#### NULL和nullptr的区别
+
+```cpp
+void fun(int)
+{
+    std::cout << "fuck1" << std::endl;
+}
+void fun(void *)
+{
+    std::cout << "fuck2" << std::endl;
+}
+int main(int argc, char *argv[])
+{
+    fun(NULL);	//"fuck1" 
+    fun(nullptr);	//fuck2
+    return 0;
+}
+```
+
+c++中NULL会被解析成0，会被当作一个整数
+
