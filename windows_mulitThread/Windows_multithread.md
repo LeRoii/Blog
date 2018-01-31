@@ -1,4 +1,4 @@
-##Windows多线程
+## Windows多线程
 
 ### 创建线程的两种方法
 `CreateThread`
@@ -89,3 +89,70 @@ HANDLECreateEvent(
  LPCTSTR lpName
 );
 ```
+
+### Mutex
+
+互斥量也是一个内核对象，它用来确保一个线程独占一个资源的访问。互斥量与关键段的行为非常相似，并且互斥量可以用于不同进程中的线程互斥访问资源<br>
+与关键段类似，互斥量也是不能解决线程间的同步问题。
+
+#### 常用函数
+
+`CreateMutex`
+
+```cpp
+HANDLECreateMutex(
+
+  LPSECURITY_ATTRIBUTESlpMutexAttributes,
+
+  BOOLbInitialOwner,     
+
+  LPCTSTRlpName
+);
+```
+
+
+函数说明：
+
+* 第一个参数表示安全控制，一般直接传入NULL。
+
+* 第二个参数用来确定互斥量的初始拥有者。如果传入TRUE表示互斥量对象内部会记录创建它的线程的线程ID号并将递归计数设置为1，由于该线程ID非零，所以互斥量处于未触发状态。如果传入FALSE，那么互斥量对象内部的线程ID号将设置为NULL，递归计数设置为0，这意味互斥量不为任何线程占用，处于触发状态。
+
+* 第三个参数用来设置互斥量的名称，在多个进程中的线程就是通过名称来确保它们访问的是同一个互斥量。
+
+
+成功返回一个表示互斥量的句柄，失败返回NULL。
+
+`OpenMutex`
+
+```cpp
+HANDLEOpenMutex(
+
+ DWORDdwDesiredAccess,
+
+ BOOLbInheritHandle,
+
+ LPCTSTRlpName     //名称
+);
+```
+
+* 第一个参数表示访问权限，对互斥量一般传入MUTEX_ALL_ACCESS。详细解释可以查看MSDN文档。
+
+* 第二个参数表示互斥量句柄继承性，一般传入TRUE即可。
+
+* 第三个参数表示名称。某一个进程中的线程创建互斥量后，其它进程中的线程就可以通过这个函数来找到这个互斥量。
+
+成功返回一个表示互斥量的句柄，失败返回NULL。
+
+
+`ReleaseMutex`
+
+访问互斥资源前应该要调用等待函数，结束访问时就要调用ReleaseMutex()来表示自己已经结束访问，其它线程可以开始访问了。
+
+1.互斥量是内核对象，它与关键段都有“线程所有权”所以不能用于线程的同步。
+
+2.互斥量能够用于多个进程之间线程互斥问题，并且能完美的解决某进程意外终止所造成的“遗弃”问题。
+
+[**互斥量和关键段的区别**](http://blog.csdn.net/lizhihaoweiwei/article/details/39186333)
+
+互斥量可以使用WaitForSingleObject等待任意时间<br>
+互斥量是一个内核对象，它被操作系统拥有，而内核对象可以在不同进程之间拷贝。所以互斥量可以 用于不同进程之间互斥，而关键段则没有这样的效果
