@@ -40,3 +40,12 @@ git push -u origin master
 ```
 git commit --amend
 ```
+
+git常用命令
+`git init`初始化仓库<br>
+`git add`增加文件<br>
+`git commit`提交到本地<br>
+`git remote`查看当前配置的远程仓库， `-v`显示地址<br>
+`git remote add [shortname] [url]`：添加一个远程仓库<br>
+`git push [remote-name] [branch-name]`：推送数据到远程仓库<br>
+`git remote rename [former name] [new name]`：修改远程仓库在本地的名字<br>

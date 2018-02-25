@@ -26,13 +26,9 @@ cmake --build .
 
 #### Eigen3
 a C++ template library for linear algebra: matrices, vectors, numerical solvers, and related algorithms.
+是一个开源线性代数库，提供有关矩阵的线性代数运算。
 
-下载[source file](http://eigen.tuxfamily.org/index.php?title=Main_Page)
-解压后进入文件夹
+
 ```
-mkdir build_dir
-cd build_dir
-cmake ..
-make
-sudo make install
+sudo apt-get install libeigen3-dev
 ```
