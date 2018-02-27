@@ -98,7 +98,14 @@ ln [-option] Src Dest
 launchctl是通过配置文件来指定执行周期和任务的
 
 
+### [source](http://blog.csdn.net/violet_echo_0908/article/details/52056071)
+```
+source FileName
+```
 
+在当前bash环境下读取并执行FileName中的命令
+source命令的作用就是用来执行一个脚本，那么：
+source a.sh 同直接执行 ./a.sh 有什么不同呢，比如你在一个脚本里export $KKK=111 ,如果你用./a.sh执行该脚本，执行完毕后，你运行 echo $KKK ,发现没有值，如果你用source来执行 ，然后再echo ,就会发现KKK=111。因为调用./a.sh来执行shell是在一个子shell里运行的，所以执行后，结构并没有反应到父shell里，但是source不同它就是在本shell中执行的，所以可以看到结果
 
 
 
