@@ -12,7 +12,7 @@ ORB-SLAM是一个基于特征点的实时单目SLAM系统，该系统包含了�
 sudo apt-get install libcv-dev
 sudo apt-get clean
 ```
-apt-get装的opencv版本较低，
+使用apt-get只安装库文件，无法选择版本，
 可以下载源码自己编译，参考：[https://www.cnblogs.com/dragonyo/p/6754599.html](https://www.cnblogs.com/dragonyo/p/6754599.html)
 #### Pangolin
 一个用于OpenGL显示/交互以及视频输入的一个轻量级、快速开发库
@@ -69,5 +69,25 @@ Change `SEQUENCE_NUMBER` to 00, 01, 02,.., 11.
 `std::chrono`:
 chrono是一个time library, 源于boost，现在已经是C++11标准，要使用chrono库，需要`#include<chrono>`，其所有实现均在std::chrono namespace下。
 
-http://www.cplusplus.com/reference/chrono/<br>
-http://blog.csdn.net/u010977122/article/details/53258859
+[http://www.cplusplus.com/reference/chrono/](http://www.cplusplus.com/reference/chrono/)<br>
+[http://blog.csdn.net/u010977122/article/details/53258859](http://blog.csdn.net/u010977122/article/details/53258859)
+
+`std::chrono::steady_clock`:<br>
+为了表示稳定的时间间隔，后一次调用now()得到的时间总是比前一次的值大（这句话的意思其实是，如果中途修改了系统时间，也不影响now()的结果），每次tick都保证过了稳定的时间间隔
+
+`std::chrono::monotonic_clock`:<br>
+is provided for backwards compatibility only; new programs should use the `std::chrono::steady_clock` class or `std::chrono::high_resolution_clock` class instead.
+
+`usleep()`与`sleep()`类似，用于延迟挂起进程。进程被挂起放到reday queue。
+是一般情况下，延迟时间数量级是秒的时候，尽可能使用sleep()函数。
+如果延迟时间为几十毫秒（1ms = 1000us），或者更小，尽可能使用usleep()函数。这样才能最佳的利用CPU时间
+```
+void usleep(int micro_seconds);
+unsigned sleep(unsigned seconds);
+```
+
+line100:<br>
+why `if(ni>)`
+
+line111:<br>
+why use `sort`

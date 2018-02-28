@@ -90,7 +90,8 @@ ln [-option] Src Dest
 ```
 
 ##### eg:<br>
-```ln -f /usr/local/Cellar/redis/3.0.4/homebrew.mxcl.redis.plist ~/Library/LaunchAgents/  
+```
+ln -f /usr/local/Cellar/redis/3.0.4/homebrew.mxcl.redis.plist ~/Library/LaunchAgents/  
 ```
 
 ### [launchctl](https://www.jianshu.com/p/4addd9b455f2)(mac command)
