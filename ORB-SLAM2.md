@@ -66,7 +66,7 @@ Change `SEQUENCE_NUMBER` to 00, 01, 02,.., 11.
 
 ### Source Code
 #### mono_kitti.cc
-`std::chrono`:
+#####`std::chrono`:
 chrono是一个time library, 源于boost，现在已经是C++11标准，要使用chrono库，需要`#include<chrono>`，其所有实现均在std::chrono namespace下。
 
 [http://www.cplusplus.com/reference/chrono/](http://www.cplusplus.com/reference/chrono/)<br>
@@ -78,7 +78,8 @@ chrono是一个time library, 源于boost，现在已经是C++11标准，要使�
 `std::chrono::monotonic_clock`:<br>
 is provided for backwards compatibility only; new programs should use the `std::chrono::steady_clock` class or `std::chrono::high_resolution_clock` class instead.
 
-`usleep()`与`sleep()`类似，用于延迟挂起进程。进程被挂起放到reday queue。
+#####`usleep()`
+与`sleep()`类似，用于延迟挂起进程。进程被挂起放到reday queue。
 是一般情况下，延迟时间数量级是秒的时候，尽可能使用sleep()函数。
 如果延迟时间为几十毫秒（1ms = 1000us），或者更小，尽可能使用usleep()函数。这样才能最佳的利用CPU时间
 ```
@@ -91,3 +92,12 @@ why `if(ni>)`
 
 line111:<br>
 why use `sort`
+
+##### unique_lock
+
+C++多线程编程中通常会对共享的数据进行写保护，以防止多线程在对共享数据成员进行读写时造成资源争抢导致程序出现未定义的行为。通常的做法是在修改共享数据成员的时候进行加锁--mutex。在使用锁的时候通常是在对共享数据进行修改之前进行lock操作，在写完之后再进行unlock操作，进场会出现由于疏忽导致由于lock之后在离开共享成员操作区域时忘记unlock，导致死锁。
+
+针对以上的问题，C++11中引入了std::unique_lock与std::lock_guard两种数据结构。通过对lock和unlock进行一次薄的封装，实现自动unlock的功能。
+
+[http://www.cplusplus.com/reference/mutex/unique_lock/?kw=unique_lock](http://www.cplusplus.com/reference/mutex/unique_lock/?kw=unique_lock)
+[http://blog.csdn.net/tgxallen/article/details/73522233](http://blog.csdn.net/tgxallen/article/details/73522233)
