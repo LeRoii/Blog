@@ -95,9 +95,14 @@ why use `sort`
 
 ##### unique_lock
 
-C++多线程编程中通常会对共享的数据进行写保护，以防止多线程在对共享数据成员进行读写时造成资源争抢导致程序出现未定义的行为。通常的做法是在修改共享数据成员的时候进行加锁--mutex。在使用锁的时候通常是在对共享数据进行修改之前进行lock操作，在写完之后再进行unlock操作，进场会出现由于疏忽导致由于lock之后在离开共享成员操作区域时忘记unlock，导致死锁。
-
-针对以上的问题，C++11中引入了std::unique_lock与std::lock_guard两种数据结构。通过对lock和unlock进行一次薄的封装，实现自动unlock的功能。
+A unique lock is an object that manages a mutex object with unique ownership in both states: locked and unlocked.
 
 [http://www.cplusplus.com/reference/mutex/unique_lock/?kw=unique_lock](http://www.cplusplus.com/reference/mutex/unique_lock/?kw=unique_lock)
 [http://blog.csdn.net/tgxallen/article/details/73522233](http://blog.csdn.net/tgxallen/article/details/73522233)
+
+##### std::mutex
+
+A mutex is a lockable object that is designed to signal when critical sections of code need exclusive access, preventing other threads with the same protection from executing concurrently and access the same memory locations.
+
+[http://www.cplusplus.com/reference/mutex/mutex/?kw=mutex](http://www.cplusplus.com/reference/mutex/mutex/?kw=mutex)
+[http://blog.csdn.net/fengbingchun/article/details/73521630](http://blog.csdn.net/fengbingchun/article/details/73521630)
