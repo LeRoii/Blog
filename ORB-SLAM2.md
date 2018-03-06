@@ -106,3 +106,9 @@ A mutex is a lockable object that is designed to signal when critical sections o
 
 [http://www.cplusplus.com/reference/mutex/mutex/?kw=mutex](http://www.cplusplus.com/reference/mutex/mutex/?kw=mutex)
 [http://blog.csdn.net/fengbingchun/article/details/73521630](http://blog.csdn.net/fengbingchun/article/details/73521630)
+
+
+##### `back_inserter`
+是一个函数，接受一个容器，容器必须有push_back方法，使用push_back()在容器尾端安插元素
+[http://www.cplusplus.com/reference/iterator/back_inserter/?kw=back_inserter](http://www.cplusplus.com/reference/iterator/back_inserter/?kw=back_inserter)
+[http://blog.csdn.net/analogous_love/article/details/51218934](http://blog.csdn.net/analogous_love/article/details/51218934)
