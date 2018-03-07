@@ -109,6 +109,14 @@ A mutex is a lockable object that is designed to signal when critical sections o
 
 
 ##### `back_inserter`
-是一个函数，接受一个容器，容器必须有push_back方法，使用push_back()在容器尾端安插元素
+是一个函数，常用在`std::copy`中，接受一个容器，容器必须有`push_back`方法，使用`push_back`在容器尾端安插元素
 [http://www.cplusplus.com/reference/iterator/back_inserter/?kw=back_inserter](http://www.cplusplus.com/reference/iterator/back_inserter/?kw=back_inserter)
 [http://blog.csdn.net/analogous_love/article/details/51218934](http://blog.csdn.net/analogous_love/article/details/51218934)
+
+##### `std::copy`
+```cpp
+OutputIterator copy (InputIterator first, InputIterator last, OutputIterator result)
+```
+把一个序列（sequence）拷贝到一个容器（container）中，copy只负责复制，不负责申请空间，所以复制前必须有足够的空间
+[http://www.cplusplus.com/reference/algorithm/copy/?kw=copy](http://www.cplusplus.com/reference/algorithm/copy/?kw=copy)
+[https://www.cnblogs.com/silentNight/p/5508605.htmlhttps://www.cnblogs.com/silentNight/p/5508605.html](https://www.cnblogs.com/silentNight/p/5508605.html)
