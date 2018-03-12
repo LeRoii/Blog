@@ -48,10 +48,17 @@ a =
 
 ### 矩阵的逆矩阵
 
-1.对于方阵A，如果为非奇异方阵，则存在逆矩阵inv(A)
-
+1.对于方阵A，如果为非奇异方阵，则存在逆矩阵inv(A)<br>
 2.对于奇异矩阵或者非方阵，并不存在逆矩阵，但可以使用pinv(A)求其伪逆
 
+
+### return, exit, quit
+`return`:结束程序不退出<br>
+`exit,quit`:结束并退出matlab
+
+
+### clf
+Clear current figure
 
 
 
