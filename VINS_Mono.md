@@ -47,7 +47,7 @@ Matrix3d ric[NUM_OF_CAM]:
 Vector3d tic[NUM_OF_CAM]:
 
 
-estimator_node.cpp:
+#### estimator_node.cpp:
 
 `Eigen::Vector3d tmp_P`
 linear_acceleration 预测值
@@ -71,7 +71,10 @@ linear_acceleration上一帧的观测值
 `Eigen::Vector3d gyr_0：`
 angular velocity上一帧的观测值
 
+```cpp
 void predict(const sensor_msgs::ImuConstPtr &imu_msg):
+```
+
 测未考虑观测噪声的p、v、q值，这里计算得到的pvq是估计值，注意是没有观测噪声和偏置的结果，作用是与下面预积分计算得到的pvq（考虑了观测噪声和偏置）做差得到残差
 
 ```cpp
@@ -122,8 +125,13 @@ gyr_0 = angular_velocity;
 
 #### estimator.cpp
 
+```cpp
 void Estimator::processIMU(double dt, const Vector3d &linear_acceleration, const Vector3d &angular_velocity)
+```
 处理观测值数据
+
+`map<double, ImageFrame> all_image_frame;`
+时间戳+Img信息，ImageFrame中有所有特征点和预积分信息
 
 
 #### integration_base.h
@@ -140,17 +148,53 @@ accelerometer bias random work noise standard deviation
 gyroscope bias random work noise standard deviation
 
 `Eigen::Vector3d acc_0, gyr_0;`
-上一帧IMU数据
+前一帧IMU观测值
 
 `Eigen::Vector3d acc_1, gyr_1;`
-当前帧IMU数据
+当前帧IMU观测值
 
+`const Eigen::Vector3d linearized_acc, linearized_gyr;`
+？？？？？
+
+`Eigen::Vector3d linearized_ba, linearized_bg;`
+前一帧加速度bias，gyro bias
+
+`Eigen::Vector3d delta_p;`
+前一帧位置变化量
+
+
+`Eigen::Quaterniond delta_q;`
+前一帧角度变化量
+
+`Eigen::Vector3d delta_v;`
+前一帧速度变化量
+
+
+```cpp
 void propagate(double _dt, const Eigen::Vector3d &_acc_1, const Eigen::Vector3d &_gyr_1)
+```
 积分计算两个关键帧之间IMU测量的变化量： 旋转delta_q 速度delta_v 位移delta_p，加速度的bias linearized_ba 陀螺仪的Bias linearized_bg
 同时维护更新预积分的Jacobian和Covariance,计算优化时必要的参数
+```cpp
+dt = _dt;
+acc_1 = _acc_1;
+gyr_1 = _gyr_1;
+```
+更新当前帧的$\delta$t，加速度和角度的测量值
 
+```cpp
+Vector3d result_delta_p;
+Quaterniond result_delta_q;
+Vector3d result_delta_v;
+Vector3d result_linearized_ba;
+Vector3d result_linearized_bg;
+```
+临时变量，存放中值积分结果
+
+**这里的delta_p等是累积的变化量，也就是说是从i时刻到当前时刻的变化量，这个才是最终要求的结果（为修正偏置一阶项），result_delta_p等只是一个暂时的变量**
 
 中值积分
+```cpp
 void midPointIntegration(double _dt, 
                             const Eigen::Vector3d &_acc_0, const Eigen::Vector3d &_gyr_0,
                             const Eigen::Vector3d &_acc_1, const Eigen::Vector3d &_gyr_1,
@@ -158,6 +202,7 @@ void midPointIntegration(double _dt,
                             const Eigen::Vector3d &linearized_ba, const Eigen::Vector3d &linearized_bg,
                             Eigen::Vector3d &result_delta_p, Eigen::Quaterniond &result_delta_q, Eigen::Vector3d &result_delta_v,
                             Eigen::Vector3d &result_linearized_ba, Eigen::Vector3d &result_linearized_bg, bool update_jacobian)
+```
 
 ```cpp
 Vector3d un_acc_0 = delta_q * (_acc_0 - linearized_ba);
@@ -172,13 +217,13 @@ Vector3d un_gyr = 0.5 * (_gyr_0 + _gyr_1) - linearized_bg;
 ```cpp
 result_delta_q = delta_q * Quaterniond(1, un_gyr(0) * _dt / 2, un_gyr(1) * _dt / 2, un_gyr(2) * _dt / 2);
 ```
-由角速度求得当前帧delta_q，角度变化量
+由角速度求得当前帧delta_q(角度变化量)
 
 ```cpp
 Vector3d un_acc_1 = result_delta_q * (_acc_1 - linearized_ba);
 Vector3d un_acc = 0.5 * (un_acc_0 + un_acc_1);
 ```
-当前帧加速度减bias，旋转当前帧delta_q，和上一帧加速度求均值
+当前帧加速度测量值减bias，旋转当前帧delta_q，和上一帧加速度求均值
 
 ```cpp
 result_delta_p = delta_p + delta_v * _dt + 0.5 * un_acc * _dt * _dt;
@@ -192,19 +237,57 @@ F.block<3, 3>(0, 3) = -0.25 * delta_q.toRotationMatrix() * R_a_0_x * _dt * _dt +
 ```
 
 `delta_q`:<br>
-q<sub>k</sub>
+$q_k$：前一帧orientation变化量
+
 
 `R_a_0_x`:<br>
-[a<sub>k</sub>-b<sub>a<sub>k</sub></sub>]<sub>x</sub>
+$[a_k-b_{a_k}]_\times$<br>
+$a_k$：前一帧加速度测量值<br>
+$b_{a_k}$：前一帧加速度bias
 
 `_dt`:<br>
-δt
+$\delta$t：两帧时间差<br>
 
 `result_delta_q`:<br>
-q<sub>k+1</sub>
+$q_{k+1}$：当前帧orientation变化量
 
 `R_a_1_x`:<br>
-[a<sub>k+1</sub>-b<sub>a<sub>k</sub></sub>]<sub>x</sub>
+$[a_{k+1}-b_{a_k}]_\times$<br>
+$a_{k+1}$：当前帧加速度测量值<br>
+$b_{a_k}$：前一帧加速度bias<br>
 
+  
 `R_w_x`:<br>
-\frac{ω<sub>k+1</sub>+ω<sub>k</sub>}{2}
+$[\frac{ω_{k+1}+ω_k}{2}-b_{g_k}]_\times$<br>
+$\omega_{k+1}$：当前帧orientation测量值<br>
+$\omega_k$：前一帧orientation测量值<br>
+$b_{g_k}$：前一帧orientation bias<br>
+
+
+$\delta$t：两帧时间差 `_dt`<br>
+$q_k$：前一帧orientation变化量 `delta_q`<br>
+$q_{k+1}$：当前帧orientation变化量 `result_delta_q`<br>
+$a_k$：前一帧加速度测量值 `_acc_0`<br>
+$a_{k+1}$：当前帧加速度测量值 `_acc_1`<br>
+$b_{a_k}$：前一帧加速度bias `linearized_ba`<br>
+$\omega_k$：前一帧orientation测量值 `_gyr_0`<br> 
+$\omega_{k+1}$：当前帧orientation测量值 `_gyr_1`<br>
+$b_{g_k}$：前一帧gyro bias `linearized_bg`<br>
+`delta_p` 前一帧position变化量<br>
+
+
+#### initial_ex_rotation.cpp
+calibrate camera and IMU
+
+`vector< Matrix3d > Rc;`
+`vector< Matrix3d > Rimu;`
+`vector< Matrix3d > Rc_g;`
+`Matrix3d ric;`
+
+
+#### initial_sfm.cpp
+`Matrix3d c_Rotation[frame_num];`
+`Vector3d c_Translation[frame_num];`
+`Quaterniond c_Quat[frame_num];`
+
+大小为frame_num的数组但是内容从l开始，l之前为0
