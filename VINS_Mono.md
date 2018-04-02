@@ -291,3 +291,53 @@ calibrate camera and IMU
 `Quaterniond c_Quat[frame_num];`
 
 大小为frame_num的数组但是内容从l开始，l之前为0
+
+BA的目的，最小化重投影误差
+
+#### In paper
+`b`:body(IMU) reference
+`c`:camera reference
+`k`:discrete time
+`s`:scaling parameter
+
+IMU预积分的结果是作为约束？？？
+结果是三个：<br>
+`$\hat{\alpha}^{b^k}_{b_k+1}$`:body reference下，k帧到k+1帧position变化量<br>
+`$\hat{\beta}^{b^k}_{b_k+1}$`:body reference下，k帧到k+1帧velocity变化量<br>
+`$\hat{\gamma}^{b^k}_{b_k+1}$`:body reference下，k帧到k+1帧orientation变化量<br>
+
+
+### Estimator Initialization
+to solve the scaling parameter
+
+* Highly nonlinear system<br>
+scale is not directly observable<br>
+stationary initial condition? inapplicable in real-world application<br>
+loosely-coupled sensor fusion method to get initial values<br>
+bootstrap the vision-only SLAM by 8-pts or 5-pts algorithms, or estimating homogeneous matrices. Then align metric IMU pre-integration with the visual-only SFM results. To recover scale,gravity velocity even bias.<br>
+Ignore accelerometer bias terms in the initial step.<br> 
+Due to large magnitude of the gravity vector and short during of initialization, the bias terms are hard to be observed 
+
+* Vision-only SFM<br>
+to estimate a graph of up-to-scale camera pose and feature positions
+* maintain a sliding window<br>
+1.check feature correspondences between the latest frame and all previous frames<br>
+if find stable feature tracking and sufficient parallax between the latest frame and any other frames in the window<br>
+Recover the relative rotation and up-to-scale translation between these two frames using 5-pts algorithm.<br>
+Otherwise, keep the latest frame in the window and wait for new frame<br>
+2.If 5-pts algorithm success, arbitrarily set the scale and triangulate all features in these two frames.<br>
+3.Based on these triangulated features, performe a PnP method to estimate poses of all other frames in the window.<br>
+4.A global full bundle adjustment to minimize the total reprojection error of  all feature observations
+
+* Visual-Inertial Alignment
+1) Gyroscope Bias Calibration
+将预积分的结果作为约束，求出新的gyro bias$b_\omega$，再用新的$b_\omega$ re-propagate 预积分项
+2) Veloity, Gravit Vector and Metric Scale Initialization
+由运动方程，IMU和Camera reference之间的转换关系，确定观测方程，得到最小二乘问题，求解
+3) Gravity Refinement 
+为了求世界坐标和camera坐标的关系？？？？
+4) Completing Initialization
+Translational components from the visual SFM will be scaled to metric units and fet for a tightly-coupled monocular VIO
+
+### Tightly-Coupled Monocular VIO
+A) 
