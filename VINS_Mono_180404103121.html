@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>VINS_Mono.md—D:\doc\Blog</title>
+    <style type="text/css">
+    html{font-family: sans-serif;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%}body{margin: 0}article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display: block}audio,canvas,progress,video{display: inline-block;vertical-align: baseline}audio:not([controls]){display: none;height: 0}[hidden],template{display: none}a{background: transparent}a:active,a:hover{outline: 0}abbr[title]{border-bottom: 1px dotted}b,strong{font-weight: bold}dfn{font-style: italic}h1{font-size: 2em;margin: 0.67em 0}mark{background: #ff0;color: #000}small{font-size: 80%}sub,sup{font-size: 75%;line-height: 0;position: relative;vertical-align: baseline}sup{top: -0.5em}sub{bottom: -0.25em}img{border: 0}svg:not(:root){overflow: hidden}figure{margin: 1em 40px}hr{box-sizing: content-box;height: 0}pre{overflow: auto}code,kbd,pre,samp{font-family: monospace, monospace;font-size: 1em}button,input,optgroup,select,textarea{color: inherit;font: inherit;margin: 0}button{overflow: visible}button,select{text-transform: none}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance: button;cursor: pointer}button[disabled],html input[disabled]{cursor: default}button::-moz-focus-inner,input::-moz-focus-inner{border: 0;padding: 0}input{line-height: normal}input[type="checkbox"],input[type="radio"]{box-sizing: border-box;padding: 0}input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height: auto}input[type="search"]{-webkit-appearance: textfield;box-sizing: content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance: none}fieldset{border: 1px solid #c0c0c0;margin: 0 2px;padding: 0.35em 0.625em 0.75em}legend{border: 0;padding: 0}textarea{overflow: auto}optgroup{font-weight: bold}table{border-collapse: collapse;border-spacing: 0}td,th{padding: 0}*{box-sizing: border-box}input,select,textarea,button{font: 13px/1.4 Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"}body{min-width: 1020px;font: 13px/1.4 Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";color: #333;background-color: #fff}a{color: #4183c4;text-decoration: none}a:hover,a:active{text-decoration: underline}hr,.rule{height: 0;margin: 15px 0;overflow: hidden;background: transparent;border: 0;border-bottom: 1px solid #ddd}hr:before,.rule:before{display: table;content: ""}hr:after,.rule:after{display: table;clear: both;content: ""}h1,h2,h3,h4,h5,h6{margin-top: 15px;margin-bottom: 15px;line-height: 1.1}h1{font-size: 30px}h2{font-size: 21px}h3{font-size: 16px}h4{font-size: 14px}h5{font-size: 12px}h6{font-size: 11px}small{font-size: 90%}blockquote{margin: 0}.lead{margin-bottom: 30px;font-size: 20px;font-weight: 300;color: #555}.text-muted{color: #999}.text-danger{color: #bd2c00}.text-emphasized{font-weight: bold;color: #333}ul,ol{padding: 0;margin-top: 0;margin-bottom: 0}ol ol,ul ol{list-style-type: lower-roman}ul ul ol,ul ol ol,ol ul ol,ol ol ol{list-style-type: lower-alpha}dd{margin-left: 0}tt,code{font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;font-size: 12px}pre{margin-top: 0;margin-bottom: 0;font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace}#realtime .status{overflow: visible;position: absolute;top: -5px;left: 0;background: url("/public/images/github-status.png");width: 26px;height: 26px;display: block;margin: 0 5px 0 0}#realtime .up{background-position: 0 0}#realtime .problem{background-position: 0 -53px}#realtime .down{background-position: 0 -26px}.container{max-width: 920px;margin: 0 auto 20px auto}#header{background: #FAFAFA;background: -moz-linear-gradient(#FAFAFA, #EAEAEA);background: -webkit-linear-gradient(#FAFAFA, #EAEAEA);-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#fafafa', endColorstr='#eaeaea')";border-bottom: 1px solid #CACACA;box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4),0 0 10px rgba(0, 0, 0, 0.1)}#markup{padding: 3px}#markup article{padding-top: 30px}.markdown-body{overflow: hidden;font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;font-size: 16px;line-height: 1.6;word-wrap: break-word}.markdown-body>*:first-child{margin-top: 0 !important}.markdown-body>*:last-child{margin-bottom: 0 !important}.markdown-body .absent{color: #c00}.markdown-body .anchor{position: absolute;top: 0;left: 0;display: block;padding-right: 6px;padding-left: 30px;margin-left: -30px}.markdown-body .anchor:focus{outline: none}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{position: relative;margin-top: 1em;margin-bottom: 16px;font-weight: bold;line-height: 1.4}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{display: none;color: #000;vertical-align: middle}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{padding-left: 8px;margin-left: -30px;text-decoration: none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{display: inline-block}.markdown-body h1 tt,.markdown-body h1 code,.markdown-body h2 tt,.markdown-body h2 code,.markdown-body h3 tt,.markdown-body h3 code,.markdown-body h4 tt,.markdown-body h4 code,.markdown-body h5 tt,.markdown-body h5 code,.markdown-body h6 tt,.markdown-body h6 code{font-size: inherit}.markdown-body h1{padding-bottom: 0.3em;font-size: 2.25em;line-height: 1.2;border-bottom: 1px solid #eee}.markdown-body h1 .anchor{line-height: 1}.markdown-body h2{padding-bottom: 0.3em;font-size: 1.75em;line-height: 1.225;border-bottom: 1px solid #eee}.markdown-body h2 .anchor{line-height: 1}.markdown-body h3{font-size: 1.5em;line-height: 1.43}.markdown-body h3 .anchor{line-height: 1.2}.markdown-body h4{font-size: 1.25em}.markdown-body h4 .anchor{line-height: 1.2}.markdown-body h5{font-size: 1em}.markdown-body h5 .anchor{line-height: 1.1}.markdown-body h6{font-size: 1em;color: #777}.markdown-body h6 .anchor{line-height: 1.1}.markdown-body p,.markdown-body blockquote,.markdown-body ul,.markdown-body ol,.markdown-body dl,.markdown-body table,.markdown-body pre{margin-top: 0;margin-bottom: 16px}.markdown-body hr{height: 4px;padding: 0;margin: 16px 0;background-color: #e7e7e7;border: 0 none}.markdown-body ul,.markdown-body ol{padding-left: 2em}.markdown-body ul.no-list,.markdown-body ol.no-list{padding: 0;list-style-type: none}.markdown-body ul ul,.markdown-body ul ol,.markdown-body ol ol,.markdown-body ol ul{margin-top: 0;margin-bottom: 0}.markdown-body li>p{margin-top: 16px}.markdown-body dl{padding: 0}.markdown-body dl dt{padding: 0;margin-top: 16px;font-size: 1em;font-style: italic;font-weight: bold}.markdown-body dl dd{padding: 0 16px;margin-bottom: 16px}.markdown-body blockquote{padding: 0 15px;color: #777;border-left: 4px solid #ddd}.markdown-body blockquote>:first-child{margin-top: 0}.markdown-body blockquote>:last-child{margin-bottom: 0}.markdown-body table{display: block;width: 100%;overflow: auto;word-break: normal;word-break: keep-all}.markdown-body table th{font-weight: bold}.markdown-body table th,.markdown-body table td{padding: 6px 13px;border: 1px solid #ddd}.markdown-body table tr{background-color: #fff;border-top: 1px solid #ccc}.markdown-body table tr:nth-child(2n){background-color: #f8f8f8}.markdown-body img{max-width: 100%;box-sizing: border-box}.markdown-body span.frame{display: block;overflow: hidden}.markdown-body span.frame>span{display: block;float: left;width: auto;padding: 7px;margin: 13px 0 0;overflow: hidden;border: 1px solid #ddd}.markdown-body span.frame span img{display: block;float: left}.markdown-body span.frame span span{display: block;padding: 5px 0 0;clear: both;color: #333}.markdown-body span.align-center{display: block;overflow: hidden;clear: both}.markdown-body span.align-center>span{display: block;margin: 13px auto 0;overflow: hidden;text-align: center}.markdown-body span.align-center span img{margin: 0 auto;text-align: center}.markdown-body span.align-right{display: block;overflow: hidden;clear: both}.markdown-body span.align-right>span{display: block;margin: 13px 0 0;overflow: hidden;text-align: right}.markdown-body span.align-right span img{margin: 0;text-align: right}.markdown-body span.float-left{display: block;float: left;margin-right: 13px;overflow: hidden}.markdown-body span.float-left span{margin: 13px 0 0}.markdown-body span.float-right{display: block;float: right;margin-left: 13px;overflow: hidden}.markdown-body span.float-right>span{display: block;margin: 13px auto 0;overflow: hidden;text-align: right}.markdown-body code,.markdown-body tt{padding: 0;padding-top: 0.2em;padding-bottom: 0.2em;margin: 0;font-size: 85%;background-color: rgba(0,0,0,0.04);border-radius: 3px}.markdown-body code:before,.markdown-body code:after,.markdown-body tt:before,.markdown-body tt:after{letter-spacing: -0.2em;content: "\00a0"}.markdown-body code br,.markdown-body tt br{display: none}.markdown-body del code{text-decoration: inherit}.markdown-body pre>code{padding: 0;margin: 0;font-size: 100%;word-break: normal;white-space: pre;background: transparent;border: 0}.markdown-body .highlight{margin-bottom: 16px}.markdown-body .highlight pre,.markdown-body pre{padding: 16px;overflow: auto;font-size: 85%;line-height: 1.45;background-color: #f7f7f7;border-radius: 3px}.markdown-body .highlight pre{margin-bottom: 0;word-break: normal}.markdown-body pre{word-wrap: normal}.markdown-body pre code,.markdown-body pre tt{display: inline;max-width: initial;padding: 0;margin: 0;overflow: initial;line-height: inherit;word-wrap: normal;background-color: transparent;border: 0}.markdown-body pre code:before,.markdown-body pre code:after,.markdown-body pre tt:before,.markdown-body pre tt:after{content: normal}.markdown-body kbd{display: inline-block;padding: 3px 5px;font-size: 11px;line-height: 10px;color: #555;vertical-align: middle;background-color: #fcfcfc;border: solid 1px #ccc;border-bottom-color: #bbb;border-radius: 3px;box-shadow: inset 0 -1px 0 #bbb}.codehilite{background: #ffffff}.codehilite .c{color: #999988;font-style: italic}.codehilite .err{color: #a61717;background-color: #e3d2d2}.codehilite .k{color: #000000;font-weight: bold}.codehilite .o{color: #000000;font-weight: bold}.codehilite .cm{color: #999988;font-style: italic}.codehilite .cp{color: #999999;font-weight: bold}.codehilite .c1{color: #999988;font-style: italic}.codehilite .cs{color: #999999;font-weight: bold;font-style: italic}.codehilite .gd{color: #000000;background-color: #ffdddd}.codehilite .gd .x{color: #000000;background-color: #ffaaaa}.codehilite .ge{color: #000000;font-style: italic}.codehilite .gr{color: #aa0000}.codehilite .gh{color: #999999}.codehilite .gi{color: #000000;background-color: #ddffdd}.codehilite .gi .x{color: #000000;background-color: #aaffaa}.codehilite .go{color: #888888}.codehilite .gp{color: #555555}.codehilite .gs{font-weight: bold}.codehilite .gu{color: #aaaaaa}.codehilite .gt{color: #aa0000}.codehilite .kc{color: #000000;font-weight: bold}.codehilite .kd{color: #000000;font-weight: bold}.codehilite .kp{color: #000000;font-weight: bold}.codehilite .kr{color: #000000;font-weight: bold}.codehilite .kt{color: #445588;font-weight: bold}.codehilite .m{color: #009999}.codehilite .s{color: #d14}.codehilite .na{color: #008080}.codehilite .nb{color: #0086B3}.codehilite .nc{color: #445588;font-weight: bold}.codehilite .no{color: #008080}.codehilite .ni{color: #800080}.codehilite .ne{color: #990000;font-weight: bold}.codehilite .nf{color: #990000;font-weight: bold}.codehilite .nn{color: #555555}.codehilite .nt{color: #000080}.codehilite .nv{color: #008080}.codehilite .ow{color: #000000;font-weight: bold}.codehilite .w{color: #bbbbbb}.codehilite .mf{color: #009999}.codehilite .mh{color: #009999}.codehilite .mi{color: #009999}.codehilite .mo{color: #009999}.codehilite .sb{color: #d14}.codehilite .sc{color: #d14}.codehilite .sd{color: #d14}.codehilite .s2{color: #d14}.codehilite .se{color: #d14}.codehilite .sh{color: #d14}.codehilite .si{color: #d14}.codehilite .sx{color: #d14}.codehilite .sr{color: #009926}.codehilite .s1{color: #d14}.codehilite .ss{color: #990073}.codehilite .bp{color: #999999}.codehilite .vc{color: #008080}.codehilite .vg{color: #008080}.codehilite .vi{color: #008080}.codehilite .il{color: #009999}
+    </style>
+    <style type="text/css">
+      .markdown-body hr{background:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC")}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="markup">
+        <article id="content" class="markdown-body">
+          <p>Eigen::Quaternion::inversse():
+return the quaternion describing the inverse rotation</p>
+<p>Estimator:</p>
+<p><code>Vector3d Ps[(WINDOW_SIZE + 1)]:</code>
+Position</p>
+<p><code>Vector3d Vs[(WINDOW_SIZE + 1)]:</code>
+Velocity</p>
+<p><code>Matrix3d Rs[(WINDOW_SIZE + 1)]:</code>
+Rotation</p>
+<p><code>Vector3d Bas[(WINDOW_SIZE + 1)]:</code>
+accelerometer Bias,对应linear_acceleration在x,y,z的bias</p>
+<p><code>Vector3d Bgs[(WINDOW_SIZE + 1)]:</code>
+gyroscope Bias,对应angular velocity在x,y,z的bias</p>
+<p><code>vector&lt;double&gt; dt_buf[(WINDOW_SIZE + 1)]：</code>
+time interval between two frames</p>
+<p><code>vector&lt;Vector3d&gt; linear_acceleration_buf[(WINDOW_SIZE + 1)]:</code>
+linear_acceleration</p>
+<p><code>vector&lt;Vector3d&gt; angular_velocity_buf[(WINDOW_SIZE + 1)]:</code>
+angular velocity</p>
+<p><code>IntegrationBase *pre_integrations[(WINDOW_SIZE + 1)]:</code>
+integration for every frame in slide window</p>
+<p><code>Vector3d acc_0:</code>
+raw linear_acceleration measurment IMU加速度观测值</p>
+<p><code>Vector3d gry_0:</code>
+raw angular velocity measurment 角速度观测值</p>
+<p>Matrix3d ric[NUM_OF_CAM]:</p>
+<p>Vector3d tic[NUM_OF_CAM]:</p>
+<h4>estimator_node.cpp:</h4>
+<p><code>Eigen::Vector3d tmp_P</code>
+linear_acceleration 预测值</p>
+<p><code>Eigen::Quaterniond tmp_Q:</code>
+temporal quaternion???
+angular velocity 预测值</p>
+<p><code>Eigen::Vector3d tmp_V</code>
+velocity 预测值</p>
+<p><code>Eigen::Vector3d tmp_Ba:</code>
+linear_acceleration bias</p>
+<p><code>Eigen::Vector3d tmp_Bg:</code>
+angular velocity bias</p>
+<p><code>Eigen::Vector3d acc_0：</code>
+linear_acceleration上一帧的观测值</p>
+<p><code>Eigen::Vector3d gyr_0：</code>
+angular velocity上一帧的观测值</p>
+<div class="codehilite"><pre><span class="kt">void</span> <span class="n">predict</span><span class="p">(</span><span class="k">const</span> <span class="n">sensor_msgs</span><span class="o">::</span><span class="n">ImuConstPtr</span> <span class="o">&amp;</span><span class="n">imu_msg</span><span class="p">)</span><span class="o">:</span>
+</pre></div>
+
+
+<p>测未考虑观测噪声的p、v、q值，这里计算得到的pvq是估计值，注意是没有观测噪声和偏置的结果，作用是与下面预积分计算得到的pvq（考虑了观测噪声和偏置）做差得到残差</p>
+<div class="codehilite"><pre><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="n">un_acc_0</span> <span class="o">=</span> <span class="n">tmp_Q</span> <span class="o">*</span> <span class="p">(</span><span class="n">acc_0</span> <span class="o">-</span> <span class="n">tmp_Ba</span> <span class="o">-</span> <span class="n">tmp_Q</span><span class="p">.</span><span class="n">inverse</span><span class="p">()</span> <span class="o">*</span> <span class="n">estimator</span><span class="p">.</span><span class="n">g</span><span class="p">);</span>
+</pre></div>
+
+
+<p>acc_0-bias-重力加速度g得到真实值，结果和tmp_Q相乘，得到一个旋转后的向量，旋转轴和角度由tmp_Q给出</p>
+<p><code>Eigen::Vector3d un_acc_0：</code>
+？？？？？</p>
+<div class="codehilite"><pre><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="n">un_gyr</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">gyr_0</span> <span class="o">+</span> <span class="n">angular_velocity</span><span class="p">)</span> <span class="o">-</span> <span class="n">tmp_Bg</span><span class="p">;</span>
+</pre></div>
+
+
+<p>gyr_0和angular_velocity求平均？？？然后减去Bias</p>
+<p><code>Eigen::Vector3d un_gyr:</code>
+angular_velocity真实值？？？</p>
+<div class="codehilite"><pre><span class="n">tmp_Q</span> <span class="o">=</span> <span class="n">tmp_Q</span> <span class="o">*</span> <span class="n">Utility</span><span class="o">::</span><span class="n">deltaQ</span><span class="p">(</span><span class="n">un_gyr</span> <span class="o">*</span> <span class="n">dt</span><span class="p">);</span>
+</pre></div>
+
+
+<p>两帧之间旋转的变化量(un_gyr * dt)，除2，用quaternion表示，实部为1，赋给tmp_Q</p>
+<div class="codehilite"><pre><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="n">un_acc_1</span> <span class="o">=</span> <span class="n">tmp_Q</span> <span class="o">*</span> <span class="p">(</span><span class="n">linear_acceleration</span> <span class="o">-</span> <span class="n">tmp_Ba</span> <span class="o">-</span> <span class="n">tmp_Q</span><span class="p">.</span><span class="n">inverse</span><span class="p">()</span> <span class="o">*</span> <span class="n">estimator</span><span class="p">.</span><span class="n">g</span><span class="p">);</span>
+</pre></div>
+
+
+<p>linear_acceleration测量值减bias，减重力加速度，乘tmp_Q（考虑两帧间发生的旋转）</p>
+<p>Eigen::Vector3d un_acc_1：
+linear_acceleration真实值？？？？</p>
+<div class="codehilite"><pre><span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="n">un_acc</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">un_acc_0</span> <span class="o">+</span> <span class="n">un_acc_1</span><span class="p">);</span>
+</pre></div>
+
+
+<p>un_acc_0和un_acc_1取平均得到最后的真实值？？？</p>
+<div class="codehilite"><pre><span class="n">tmp_P</span> <span class="o">=</span> <span class="n">tmp_P</span> <span class="o">+</span> <span class="n">dt</span> <span class="o">*</span> <span class="n">tmp_V</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">dt</span> <span class="o">*</span> <span class="n">dt</span> <span class="o">*</span> <span class="n">un_acc</span><span class="p">;</span>
+<span class="n">tmp_V</span> <span class="o">=</span> <span class="n">tmp_V</span> <span class="o">+</span> <span class="n">dt</span> <span class="o">*</span> <span class="n">un_acc</span><span class="p">;</span>
+</pre></div>
+
+
+<p>由刚得到的加速度更新位置和速度</p>
+<div class="codehilite"><pre>acc_0 = linear_acceleration;
+gyr_0 = angular_velocity;
+</pre></div>
+
+
+<p>更新观测值？？？？</p>
+<h4>estimator.cpp</h4>
+<div class="codehilite"><pre><span class="kt">void</span> <span class="n">Estimator</span><span class="o">::</span><span class="n">processIMU</span><span class="p">(</span><span class="kt">double</span> <span class="n">dt</span><span class="p">,</span> <span class="k">const</span> <span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">linear_acceleration</span><span class="p">,</span> <span class="k">const</span> <span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">angular_velocity</span><span class="p">)</span>
+</pre></div>
+
+
+<p>处理观测值数据</p>
+<p><code>map&lt;double, ImageFrame&gt; all_image_frame;</code>
+时间戳+Img信息，ImageFrame中有所有特征点和预积分信息</p>
+<h4>integration_base.h</h4>
+<p><code>ACC_N</code>
+accelerometer measurement noise standard deviation(标准差)</p>
+<p><code>GYR_N</code>
+gyroscope measurement noise standard deviation</p>
+<p><code>ACC_W</code>
+accelerometer bias random work noise standard deviation</p>
+<p><code>GYR_W</code>
+gyroscope bias random work noise standard deviation</p>
+<p><code>Eigen::Vector3d acc_0, gyr_0;</code>
+前一帧IMU观测值</p>
+<p><code>Eigen::Vector3d acc_1, gyr_1;</code>
+当前帧IMU观测值</p>
+<p><code>const Eigen::Vector3d linearized_acc, linearized_gyr;</code>
+？？？？？</p>
+<p><code>Eigen::Vector3d linearized_ba, linearized_bg;</code>
+前一帧加速度bias，gyro bias</p>
+<p><code>Eigen::Vector3d delta_p;</code>
+前一帧位置变化量</p>
+<p><code>Eigen::Quaterniond delta_q;</code>
+前一帧角度变化量</p>
+<p><code>Eigen::Vector3d delta_v;</code>
+前一帧速度变化量</p>
+<div class="codehilite"><pre><span class="kt">void</span> <span class="n">propagate</span><span class="p">(</span><span class="kt">double</span> <span class="n">_dt</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">_acc_1</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">_gyr_1</span><span class="p">)</span>
+</pre></div>
+
+
+<p>积分计算两个关键帧之间IMU测量的变化量： 旋转delta_q 速度delta_v 位移delta_p，加速度的bias linearized_ba 陀螺仪的Bias linearized_bg
+同时维护更新预积分的Jacobian和Covariance,计算优化时必要的参数</p>
+<div class="codehilite"><pre><span class="n">dt</span> <span class="o">=</span> <span class="n">_dt</span><span class="p">;</span>
+<span class="n">acc_1</span> <span class="o">=</span> <span class="n">_acc_1</span><span class="p">;</span>
+<span class="n">gyr_1</span> <span class="o">=</span> <span class="n">_gyr_1</span><span class="p">;</span>
+</pre></div>
+
+
+<p>更新当前帧的<mathjax>$\delta$</mathjax>t，加速度和角度的测量值</p>
+<div class="codehilite"><pre><span class="n">Vector3d</span> <span class="n">result_delta_p</span><span class="p">;</span>
+<span class="n">Quaterniond</span> <span class="n">result_delta_q</span><span class="p">;</span>
+<span class="n">Vector3d</span> <span class="n">result_delta_v</span><span class="p">;</span>
+<span class="n">Vector3d</span> <span class="n">result_linearized_ba</span><span class="p">;</span>
+<span class="n">Vector3d</span> <span class="n">result_linearized_bg</span><span class="p">;</span>
+</pre></div>
+
+
+<p>临时变量，存放中值积分结果</p>
+<p><strong>这里的delta_p等是累积的变化量，也就是说是从i时刻到当前时刻的变化量，这个才是最终要求的结果（为修正偏置一阶项），result_delta_p等只是一个暂时的变量</strong></p>
+<p>中值积分</p>
+<div class="codehilite"><pre><span class="kt">void</span> <span class="n">midPointIntegration</span><span class="p">(</span><span class="kt">double</span> <span class="n">_dt</span><span class="p">,</span> 
+                            <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">_acc_0</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">_gyr_0</span><span class="p">,</span>
+                            <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">_acc_1</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">_gyr_1</span><span class="p">,</span>
+                            <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">delta_p</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Quaterniond</span> <span class="o">&amp;</span><span class="n">delta_q</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">delta_v</span><span class="p">,</span>
+                            <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">linearized_ba</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">linearized_bg</span><span class="p">,</span>
+                            <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">result_delta_p</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Quaterniond</span> <span class="o">&amp;</span><span class="n">result_delta_q</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">result_delta_v</span><span class="p">,</span>
+                            <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">result_linearized_ba</span><span class="p">,</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Vector3d</span> <span class="o">&amp;</span><span class="n">result_linearized_bg</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">update_jacobian</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span class="n">Vector3d</span> <span class="n">un_acc_0</span> <span class="o">=</span> <span class="n">delta_q</span> <span class="o">*</span> <span class="p">(</span><span class="n">_acc_0</span> <span class="o">-</span> <span class="n">linearized_ba</span><span class="p">);</span>
+</pre></div>
+
+
+<p>上一帧加速度减bias，旋转delta_q(上一帧的旋转变化量)</p>
+<div class="codehilite"><pre><span class="n">Vector3d</span> <span class="n">un_gyr</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">_gyr_0</span> <span class="o">+</span> <span class="n">_gyr_1</span><span class="p">)</span> <span class="o">-</span> <span class="n">linearized_bg</span><span class="p">;</span>
+</pre></div>
+
+
+<p>两帧角速度求均值减bias</p>
+<div class="codehilite"><pre><span class="n">result_delta_q</span> <span class="o">=</span> <span class="n">delta_q</span> <span class="o">*</span> <span class="n">Quaterniond</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">un_gyr</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="n">_dt</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">un_gyr</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">_dt</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">un_gyr</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">_dt</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span>
+</pre></div>
+
+
+<p>由角速度求得当前帧delta_q(角度变化量)</p>
+<div class="codehilite"><pre><span class="n">Vector3d</span> <span class="n">un_acc_1</span> <span class="o">=</span> <span class="n">result_delta_q</span> <span class="o">*</span> <span class="p">(</span><span class="n">_acc_1</span> <span class="o">-</span> <span class="n">linearized_ba</span><span class="p">);</span>
+<span class="n">Vector3d</span> <span class="n">un_acc</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">un_acc_0</span> <span class="o">+</span> <span class="n">un_acc_1</span><span class="p">);</span>
+</pre></div>
+
+
+<p>当前帧加速度测量值减bias，旋转当前帧delta_q，和上一帧加速度求均值</p>
+<div class="codehilite"><pre><span class="n">result_delta_p</span> <span class="o">=</span> <span class="n">delta_p</span> <span class="o">+</span> <span class="n">delta_v</span> <span class="o">*</span> <span class="n">_dt</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">un_acc</span> <span class="o">*</span> <span class="n">_dt</span> <span class="o">*</span> <span class="n">_dt</span><span class="p">;</span>
+<span class="n">result_delta_v</span> <span class="o">=</span> <span class="n">delta_v</span> <span class="o">+</span> <span class="n">un_acc</span> <span class="o">*</span> <span class="n">_dt</span><span class="p">;</span>
+</pre></div>
+
+
+<p>当前帧位置速度的变化量</p>
+<div class="codehilite"><pre><span class="n">F</span><span class="p">.</span><span class="n">block</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.25</span> <span class="o">*</span> <span class="n">delta_q</span><span class="p">.</span><span class="n">toRotationMatrix</span><span class="p">()</span> <span class="o">*</span> <span class="n">R_a_0_x</span> <span class="o">*</span> <span class="n">_dt</span> <span class="o">*</span> <span class="n">_dt</span> <span class="o">+</span> 
+<span class="o">-</span><span class="mf">0.25</span> <span class="o">*</span> <span class="n">result_delta_q</span><span class="p">.</span><span class="n">toRotationMatrix</span><span class="p">()</span> <span class="o">*</span> <span class="n">R_a_1_x</span> <span class="o">*</span> <span class="p">(</span><span class="n">Matrix3d</span><span class="o">::</span><span class="n">Identity</span><span class="p">()</span> <span class="o">-</span><span class="n">R_w_x</span> <span class="o">*</span> <span class="n">_dt</span><span class="p">)</span> <span class="o">*</span> <span class="n">_dt</span> <span class="o">*</span> <span class="n">_dt</span><span class="p">;</span>
+</pre></div>
+
+
+<p><code>delta_q</code>:<br>
+<mathjax>$q_k$</mathjax>：前一帧orientation变化量</p>
+<p><code>R_a_0_x</code>:<br>
+<mathjax>$[a_k-b_{a_k}]_\times$</mathjax><br>
+<mathjax>$a_k$</mathjax>：前一帧加速度测量值<br>
+<mathjax>$b_{a_k}$</mathjax>：前一帧加速度bias</p>
+<p><code>_dt</code>:<br>
+<mathjax>$\delta$</mathjax>t：两帧时间差<br></p>
+<p><code>result_delta_q</code>:<br>
+<mathjax>$q_{k+1}$</mathjax>：当前帧orientation变化量</p>
+<p><code>R_a_1_x</code>:<br>
+<mathjax>$[a_{k+1}-b_{a_k}]_\times$</mathjax><br>
+<mathjax>$a_{k+1}$</mathjax>：当前帧加速度测量值<br>
+<mathjax>$b_{a_k}$</mathjax>：前一帧加速度bias<br></p>
+<p><code>R_w_x</code>:<br>
+<mathjax>$[\frac{ω_{k+1}+ω_k}{2}-b_{g_k}]_\times$</mathjax><br>
+<mathjax>$\omega_{k+1}$</mathjax>：当前帧orientation测量值<br>
+<mathjax>$\omega_k$</mathjax>：前一帧orientation测量值<br>
+<mathjax>$b_{g_k}$</mathjax>：前一帧orientation bias<br></p>
+<p><mathjax>$\delta$</mathjax>t：两帧时间差 <code>_dt</code><br>
+<mathjax>$q_k$</mathjax>：前一帧orientation变化量 <code>delta_q</code><br>
+<mathjax>$q_{k+1}$</mathjax>：当前帧orientation变化量 <code>result_delta_q</code><br>
+<mathjax>$a_k$</mathjax>：前一帧加速度测量值 <code>_acc_0</code><br>
+<mathjax>$a_{k+1}$</mathjax>：当前帧加速度测量值 <code>_acc_1</code><br>
+<mathjax>$b_{a_k}$</mathjax>：前一帧加速度bias <code>linearized_ba</code><br>
+<mathjax>$\omega_k$</mathjax>：前一帧orientation测量值 <code>_gyr_0</code><br> 
+<mathjax>$\omega_{k+1}$</mathjax>：当前帧orientation测量值 <code>_gyr_1</code><br>
+<mathjax>$b_{g_k}$</mathjax>：前一帧gyro bias <code>linearized_bg</code><br>
+<code>delta_p</code> 前一帧position变化量<br></p>
+<h4>initial_ex_rotation.cpp</h4>
+<p>calibrate camera and IMU</p>
+<p><code>vector&lt; Matrix3d &gt; Rc;</code>
+<code>vector&lt; Matrix3d &gt; Rimu;</code>
+<code>vector&lt; Matrix3d &gt; Rc_g;</code>
+<code>Matrix3d ric;</code></p>
+<h4>initial_sfm.cpp</h4>
+<p><code>Matrix3d c_Rotation[frame_num];</code>
+<code>Vector3d c_Translation[frame_num];</code>
+<code>Quaterniond c_Quat[frame_num];</code></p>
+<p>大小为frame_num的数组但是内容从l开始，l之前为0</p>
+<p>BA的目的，最小化重投影误差</p>
+<p>松耦合和紧耦合，松耦合分别单独计算出IMU测量得到的状态和视觉里程计得到的状态然后融合，紧耦合则将IMU测量和视觉约束信息放在一个非线性优化函数中去优化．紧耦合的框架使得IMU数据可以对视觉里程计进行矫正，同时视觉里程计信息也可以矫正IMU的零偏，因此一般认为紧耦合的定位精度较高．个人认为松耦合和滤波融合的方法类似，紧耦合则主要基于非线性优化．</p>
+<h4>VINS paper Overview</h4>
+<h5>Notations and frame definitions</h5>
+<p><mathjax>$(\cdot)^b$</mathjax>: body(IMU) frame<br>
+<mathjax>$(\cdot)^c$</mathjax>: camera frame<br>
+<mathjax>$(\cdot)_k$</mathjax>: discrete time<br>
+<mathjax>$s$</mathjax>: scaling parameter</p>
+<h5>Measurement Preprocessing</h5>
+<p>For visual measurements</p>
+<ul>
+<li>track features between consecutive frames</li>
+<li>detect new features in the latest frame</li>
+</ul>
+<p>For IMU measurements</p>
+<ul>
+<li>pre-integrate between two consecutive frames<br>
+IMU measurements are affected by both bias and noise<br>
+take bias into account in the pre-integration process</li>
+</ul>
+<h6><em>A. Vision Processing Front-end</em></h6>
+<ul>
+<li>Features are tracked by the KLT sparse optical flow algorithm</li>
+<li>100-300 features in each image</li>
+<li>2D features are firstly undistorted</li>
+<li>outlier rejection using RANSAN with fundamental matrix model</li>
+<li>projected to a unit sphere</li>
+</ul>
+<p>Two criteria for keyframe selection</p>
+<ul>
+<li>average parallax of tracked feature between the current frame and the latest keyframe is beyond a certain threshold</li>
+<li>tracking quality, number of tracked features below a certain threshold</li>
+</ul>
+<h6><em>B. IMU Pre-integration</em></h6>
+<p>State Estimation其实是想估计任意时刻的全局坐标系下的位置和姿态, 也就是论文中的<mathjax>$p^\omega_{b_k}$</mathjax>,<mathjax>$v^\omega_{b_k}$</mathjax>,<mathjax>$q^\omega_{b_k}$</mathjax> 分别对应位置,速度,旋转四元数</p>
+<p>即当前时刻的状态可以通过上一时刻状态来迭代求得. 但这里有个问题在于积分中有<mathjax>$R^\omega_t$</mathjax>,<mathjax>$q^{b_k}_t$</mathjax>, 它是t时刻在world系下的旋转, 是一个要估计的量, 后面估计的过程中, 这个量会被不断的更新改变, 如果按照上面的式子, 那么每变一次就得重新积分. 把上次都乘一个旋转<mathjax>$R^{b_k}_\omega$</mathjax> 转到<mathjax>$b_k$</mathjax>系下.<br>
+把<mathjax>$R^\omega_t$</mathjax>从积分中抽出来, 这样不管<mathjax>$R^\omega_{b_k}$</mathjax>怎么变, 我们只需要一些简单的旋转矩阵相乘就能得到世界坐标系下的状态量. <br></p>
+<p>直观的理解是: 位置,姿态,速度等, 它们的绝对量是跟参考坐标系的选取有关的, 如果参考坐标系移动了, 那么这些量也会跟着改变, 但某两个时刻之间的相对量(<mathjax>$p^{b_k}_{b_k+1}$</mathjax>,<mathjax>$v^{b_k}_{b_k+1}$</mathjax>,<mathjax>$q^{b_k}_{b_k+1}$</mathjax>)是跟坐标选取无关的, 不管在哪个坐标系下看, 相对变化是不变的, 所以可以事先把这些不变的量求出来. <mathjax>$p^\omega_{b_k}$</mathjax>,<mathjax>$q^\omega_{b_k}$</mathjax>,这些状态发生改变后, 可以通过矩阵乘法很容易的把相对量转成绝对量. </p>
+<p>更加简单的理解: 把相邻两帧图像之间的一段时间的IMU预先积分起来, 得到两帧之间的IMU相对运动, 也就是把多个IMU观测变成一个运动观测, 它是不随某一时刻的绝对位姿改变而发生改变的.</p>
+<p>三个结果：<br>
+<mathjax>$\hat{\alpha}^{b_k}_{b_k+1}$</mathjax>:body reference下，k帧到k+1帧position变化量的估计值(noisy measurement or estimate of a certain quantity)<br>
+<mathjax>$\hat{\beta}^{b_k}_{b_k+1}$</mathjax>:body reference下，k帧到k+1帧velocity变化量的估计值<br>
+<mathjax>$\hat{\gamma}^{b_k}_{b_k+1}$</mathjax>:body reference下，k帧到k+1帧orientation变化量的估计值<br>
+其实还有两个bias<br>
+IMU预积分的结果是作为约束？？？<br></p>
+<h5>Estimator Initialization</h5>
+<p>to solve the scaling parameter</p>
+<ul>
+<li>Highly nonlinear system<br>
+scale is not directly observable<br>
+stationary initial condition? inapplicable in real-world application<br>
+loosely-coupled sensor fusion method to get initial values<br>
+bootstrap the vision-only SLAM by 8-pts or 5-pts algorithms, or estimating homogeneous matrices. Then align metric IMU pre-integration with the visual-only SFM results. To recover scale,gravity velocity even bias.<br>
+Ignore accelerometer bias terms in the initial step.<br> 
+Due to large magnitude of the gravity vector and short during of initialization, the bias terms are hard to be observed </li>
+</ul>
+<h6><em>A. Sliding Window Vision-only SFM</em><br></h6>
+<p>to estimate a graph of up-to-scale camera pose and feature positions</p>
+<p>maintain a sliding window<br></p>
+<p>1.check feature correspondences between the latest frame and all previous frames<br></p>
+<p>if find stable feature tracking and sufficient parallax between the latest frame and any other frames in the window<br></p>
+<p>Recover the relative rotation and up-to-scale translation between these two frames using 5-pts algorithm.<br></p>
+<p>Otherwise, keep the latest frame in the window and wait for new frame<br></p>
+<p>2.If 5-pts algorithm success, arbitrarily set the scale and triangulate all features in these two frames.<br></p>
+<p>3.Based on these triangulated features, performe a PnP method to estimate poses of all other frames in the window.<br></p>
+<p>4.A global full bundle adjustment to minimize the total reprojection error of  all feature observations</p>
+<h6><em>B. Visual-Inertial Alignment</em><br></h6>
+<p>1) Gyroscope Bias Calibration<br>
+将预积分的结果作为约束，由cost function(15)求出新的gyro bias <mathjax>$b_\omega$</mathjax>，再用新的<mathjax>$b_\omega$</mathjax> re-propagate 预积分项<br></p>
+<p>2) Veloity, Gravit Vector and Metric Scale Initialization<br>
+由运动方程，IMU和Camera reference之间的转换关系，确定观测方程，得到最小二乘问题，求解<br></p>
+<p>3) Gravity Refinement <br>
+为了求世界坐标和camera坐标的关系？？？？<br></p>
+<p>4) Completing Initialization<br>
+Translational components from the visual SFM will be scaled to metric units and fed for a tightly-coupled monocular VIO</p>
+<h5>Tightly-Coupled Monocular VIO</h5>
+<h6><em>A) Formulation</em><br></h6>
+<p>visual-inertial bundle adjustment formulation
+minimize the sum of prior and the Mahalanobis norm of all measurement residuals to obtain a maximum posteriori estimation<br></p>
+<h6><em>B) IMU Measurement Residual</em><br></h6>
+<h6><em>C) Visual Measurement Residual</em><br></h6>
+<p>Define the camera measurement residual on a unit sphere<br></p>
+<h6><em>D) Marginalization</em><br></h6>
+<p>To bound the computational complexity<br>
+Selectively marginalize out IMU states and features from the sliding window<br>
+Convert measurements corresponding to marginalized states into a prior????<br>
+把丢弃的帧的IMU数据保存下来当作先验信息？？？？<br></p>
+<h6><em>E) Motion-only Visual-Iertial Bundle Adjustment for Camera-Rate State Estimation</em><br></h6>
+<p>Only optimize the poses and velocities of a fixed number of latest IMU states<br>
+Treat feature depth, extrinsic parameters, bias, and old IMU states as constant values<br></p>
+<h6><em>F) IMU forward Propagation for IMU-Rate State Estimation</em></h6>
+<p>Propagate the latest VIO estimate with the set of most recent IMU measurements to achieve IMU-rate performance<br>
+The high-frequency state estimates can be utilized as state feedback for closed loop closure<br></p>
+<h6><em>G) Failure Detection and Recovery</em><br></h6>
+<ul>
+<li>The number of features being tracking in the latest frame is less than a certain threshold<br></li>
+<li>Large discontinuity in position or rotation between last two estimator outputs<br></li>
+<li>Large change in bias or extrinsic parameters estimation<br></li>
+</ul>
+<h5>Relocalization</h5>
+<p>Drifts occur in global 3D position(x,y,z) and the rotation around the gravity direction(yaw)</p>
+<h6><em>A. Loop Detection</em></h6>
+<p>DBoW2<br>
+Descriptors are treated as the visual word to query the visual database<br>
+Keep all BRIEF descriptors for feature retrieving<br>
+Discard raw image</p>
+<h6><em>B. Feature Retrieval</em></h6>
+<p>The connection between the local sliding window and the loop closure candidate is established by retrieving feature correspondences<br>
+Correspondences are found by BRIEF descriptor matching<br>
+Two-step geometric outlier rejection</p>
+<h6><em>C. Tightly-Coupled Relocalization</em></h6>
+<p>relocalization将滑窗和位姿图对应？？？？<br>
+Optimize the sliding window</p>
+<h5>Global Pose Graph Optimization</h5>
+<p>Utilizing the relocalization results, to ensure the set of past poses are registered into a globally consistent configuration<br>
+Visual-inertial setup redeners roll and pitch angles fully observable<br>
+Only perform 4-DOF pose graph optimization(x,y,z,yaw)</p>
+<h6><em>A. Adding Keyframes into the Pose Graph</em></h6>
+<p>When a keyframe is marginalized out from the sliding window, it will be added to pose graph.<br>
+This keyframe serves as a vertex in the pose graph and it connects with other vertexs by two types of edges<br></p>
+<p>1) Sequential Edge<br>
+represents the relative transformation between two keyframes in the local sliding window, which value is taken directly from VIO<br></p>
+<p>2) Loop Closure Edge<br>
+connects the marginalized keyframe with the loop closure frame</p>
+<p>The value of the loop closure edge is obtained using results from relocalization</p>
+<h6><em>B. 4-DOF Pose Graph Optimization</em></h6>
+<p>The whole graph of sequential edges and loop closure edges are optimized by minimizing the cost function</p>
+<p>Pose graph optimization and relocalization runs asynchronously in two separate threads</p>
+<h6><em>C. Pose Graph Management</em></h6>
+<p>Downsample process to maintain the pose graph database to a limited size</p>
+<p>All keyframes with loop closure constraints will be kept,while other keyframes that are either too close or have very similar orientations to its neighbors may be removed</p>
+<h3>Least squares</h3>
+<p>A standard approach to approximate the solution of overdetermined system(sets of equations in which there are more equationss than unkowns),"Least squares" means that the overall sloution minimize the sum of the squares of the residuals made in the results of every single equation
+Two categories:
+<em> Linear
+</em> Nonlinear
+solved by iterative refinement,at each iteration the system is approximated by a linear one<br>
+depending on whether or not the residuals are linear </p>
+        </article>
+      </div>
+    </div>
+  </body>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          displayMath: [ ['$$', '$$'], ["\\[", "\\]"] ],
+          processEscapes: true
+        },
+        TeX: {
+          equationNumbers: {
+            autoNumber: 'AMS'
+          }
+        },
+        "HTML-CSS": {
+          imageFont: null
+        }
+      });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.1-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</html>
