@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>VINS paper Overview.md—D:\doc\Blog</title>
+    <style type="text/css">
+    html{font-family: sans-serif;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%}body{margin: 0}article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display: block}audio,canvas,progress,video{display: inline-block;vertical-align: baseline}audio:not([controls]){display: none;height: 0}[hidden],template{display: none}a{background: transparent}a:active,a:hover{outline: 0}abbr[title]{border-bottom: 1px dotted}b,strong{font-weight: bold}dfn{font-style: italic}h1{font-size: 2em;margin: 0.67em 0}mark{background: #ff0;color: #000}small{font-size: 80%}sub,sup{font-size: 75%;line-height: 0;position: relative;vertical-align: baseline}sup{top: -0.5em}sub{bottom: -0.25em}img{border: 0}svg:not(:root){overflow: hidden}figure{margin: 1em 40px}hr{box-sizing: content-box;height: 0}pre{overflow: auto}code,kbd,pre,samp{font-family: monospace, monospace;font-size: 1em}button,input,optgroup,select,textarea{color: inherit;font: inherit;margin: 0}button{overflow: visible}button,select{text-transform: none}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance: button;cursor: pointer}button[disabled],html input[disabled]{cursor: default}button::-moz-focus-inner,input::-moz-focus-inner{border: 0;padding: 0}input{line-height: normal}input[type="checkbox"],input[type="radio"]{box-sizing: border-box;padding: 0}input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height: auto}input[type="search"]{-webkit-appearance: textfield;box-sizing: content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance: none}fieldset{border: 1px solid #c0c0c0;margin: 0 2px;padding: 0.35em 0.625em 0.75em}legend{border: 0;padding: 0}textarea{overflow: auto}optgroup{font-weight: bold}table{border-collapse: collapse;border-spacing: 0}td,th{padding: 0}*{box-sizing: border-box}input,select,textarea,button{font: 13px/1.4 Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"}body{min-width: 1020px;font: 13px/1.4 Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";color: #333;background-color: #fff}a{color: #4183c4;text-decoration: none}a:hover,a:active{text-decoration: underline}hr,.rule{height: 0;margin: 15px 0;overflow: hidden;background: transparent;border: 0;border-bottom: 1px solid #ddd}hr:before,.rule:before{display: table;content: ""}hr:after,.rule:after{display: table;clear: both;content: ""}h1,h2,h3,h4,h5,h6{margin-top: 15px;margin-bottom: 15px;line-height: 1.1}h1{font-size: 30px}h2{font-size: 21px}h3{font-size: 16px}h4{font-size: 14px}h5{font-size: 12px}h6{font-size: 11px}small{font-size: 90%}blockquote{margin: 0}.lead{margin-bottom: 30px;font-size: 20px;font-weight: 300;color: #555}.text-muted{color: #999}.text-danger{color: #bd2c00}.text-emphasized{font-weight: bold;color: #333}ul,ol{padding: 0;margin-top: 0;margin-bottom: 0}ol ol,ul ol{list-style-type: lower-roman}ul ul ol,ul ol ol,ol ul ol,ol ol ol{list-style-type: lower-alpha}dd{margin-left: 0}tt,code{font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;font-size: 12px}pre{margin-top: 0;margin-bottom: 0;font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace}#realtime .status{overflow: visible;position: absolute;top: -5px;left: 0;background: url("/public/images/github-status.png");width: 26px;height: 26px;display: block;margin: 0 5px 0 0}#realtime .up{background-position: 0 0}#realtime .problem{background-position: 0 -53px}#realtime .down{background-position: 0 -26px}.container{max-width: 920px;margin: 0 auto 20px auto}#header{background: #FAFAFA;background: -moz-linear-gradient(#FAFAFA, #EAEAEA);background: -webkit-linear-gradient(#FAFAFA, #EAEAEA);-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#fafafa', endColorstr='#eaeaea')";border-bottom: 1px solid #CACACA;box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4),0 0 10px rgba(0, 0, 0, 0.1)}#markup{padding: 3px}#markup article{padding-top: 30px}.markdown-body{overflow: hidden;font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;font-size: 16px;line-height: 1.6;word-wrap: break-word}.markdown-body>*:first-child{margin-top: 0 !important}.markdown-body>*:last-child{margin-bottom: 0 !important}.markdown-body .absent{color: #c00}.markdown-body .anchor{position: absolute;top: 0;left: 0;display: block;padding-right: 6px;padding-left: 30px;margin-left: -30px}.markdown-body .anchor:focus{outline: none}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{position: relative;margin-top: 1em;margin-bottom: 16px;font-weight: bold;line-height: 1.4}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{display: none;color: #000;vertical-align: middle}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{padding-left: 8px;margin-left: -30px;text-decoration: none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{display: inline-block}.markdown-body h1 tt,.markdown-body h1 code,.markdown-body h2 tt,.markdown-body h2 code,.markdown-body h3 tt,.markdown-body h3 code,.markdown-body h4 tt,.markdown-body h4 code,.markdown-body h5 tt,.markdown-body h5 code,.markdown-body h6 tt,.markdown-body h6 code{font-size: inherit}.markdown-body h1{padding-bottom: 0.3em;font-size: 2.25em;line-height: 1.2;border-bottom: 1px solid #eee}.markdown-body h1 .anchor{line-height: 1}.markdown-body h2{padding-bottom: 0.3em;font-size: 1.75em;line-height: 1.225;border-bottom: 1px solid #eee}.markdown-body h2 .anchor{line-height: 1}.markdown-body h3{font-size: 1.5em;line-height: 1.43}.markdown-body h3 .anchor{line-height: 1.2}.markdown-body h4{font-size: 1.25em}.markdown-body h4 .anchor{line-height: 1.2}.markdown-body h5{font-size: 1em}.markdown-body h5 .anchor{line-height: 1.1}.markdown-body h6{font-size: 1em;color: #777}.markdown-body h6 .anchor{line-height: 1.1}.markdown-body p,.markdown-body blockquote,.markdown-body ul,.markdown-body ol,.markdown-body dl,.markdown-body table,.markdown-body pre{margin-top: 0;margin-bottom: 16px}.markdown-body hr{height: 4px;padding: 0;margin: 16px 0;background-color: #e7e7e7;border: 0 none}.markdown-body ul,.markdown-body ol{padding-left: 2em}.markdown-body ul.no-list,.markdown-body ol.no-list{padding: 0;list-style-type: none}.markdown-body ul ul,.markdown-body ul ol,.markdown-body ol ol,.markdown-body ol ul{margin-top: 0;margin-bottom: 0}.markdown-body li>p{margin-top: 16px}.markdown-body dl{padding: 0}.markdown-body dl dt{padding: 0;margin-top: 16px;font-size: 1em;font-style: italic;font-weight: bold}.markdown-body dl dd{padding: 0 16px;margin-bottom: 16px}.markdown-body blockquote{padding: 0 15px;color: #777;border-left: 4px solid #ddd}.markdown-body blockquote>:first-child{margin-top: 0}.markdown-body blockquote>:last-child{margin-bottom: 0}.markdown-body table{display: block;width: 100%;overflow: auto;word-break: normal;word-break: keep-all}.markdown-body table th{font-weight: bold}.markdown-body table th,.markdown-body table td{padding: 6px 13px;border: 1px solid #ddd}.markdown-body table tr{background-color: #fff;border-top: 1px solid #ccc}.markdown-body table tr:nth-child(2n){background-color: #f8f8f8}.markdown-body img{max-width: 100%;box-sizing: border-box}.markdown-body span.frame{display: block;overflow: hidden}.markdown-body span.frame>span{display: block;float: left;width: auto;padding: 7px;margin: 13px 0 0;overflow: hidden;border: 1px solid #ddd}.markdown-body span.frame span img{display: block;float: left}.markdown-body span.frame span span{display: block;padding: 5px 0 0;clear: both;color: #333}.markdown-body span.align-center{display: block;overflow: hidden;clear: both}.markdown-body span.align-center>span{display: block;margin: 13px auto 0;overflow: hidden;text-align: center}.markdown-body span.align-center span img{margin: 0 auto;text-align: center}.markdown-body span.align-right{display: block;overflow: hidden;clear: both}.markdown-body span.align-right>span{display: block;margin: 13px 0 0;overflow: hidden;text-align: right}.markdown-body span.align-right span img{margin: 0;text-align: right}.markdown-body span.float-left{display: block;float: left;margin-right: 13px;overflow: hidden}.markdown-body span.float-left span{margin: 13px 0 0}.markdown-body span.float-right{display: block;float: right;margin-left: 13px;overflow: hidden}.markdown-body span.float-right>span{display: block;margin: 13px auto 0;overflow: hidden;text-align: right}.markdown-body code,.markdown-body tt{padding: 0;padding-top: 0.2em;padding-bottom: 0.2em;margin: 0;font-size: 85%;background-color: rgba(0,0,0,0.04);border-radius: 3px}.markdown-body code:before,.markdown-body code:after,.markdown-body tt:before,.markdown-body tt:after{letter-spacing: -0.2em;content: "\00a0"}.markdown-body code br,.markdown-body tt br{display: none}.markdown-body del code{text-decoration: inherit}.markdown-body pre>code{padding: 0;margin: 0;font-size: 100%;word-break: normal;white-space: pre;background: transparent;border: 0}.markdown-body .highlight{margin-bottom: 16px}.markdown-body .highlight pre,.markdown-body pre{padding: 16px;overflow: auto;font-size: 85%;line-height: 1.45;background-color: #f7f7f7;border-radius: 3px}.markdown-body .highlight pre{margin-bottom: 0;word-break: normal}.markdown-body pre{word-wrap: normal}.markdown-body pre code,.markdown-body pre tt{display: inline;max-width: initial;padding: 0;margin: 0;overflow: initial;line-height: inherit;word-wrap: normal;background-color: transparent;border: 0}.markdown-body pre code:before,.markdown-body pre code:after,.markdown-body pre tt:before,.markdown-body pre tt:after{content: normal}.markdown-body kbd{display: inline-block;padding: 3px 5px;font-size: 11px;line-height: 10px;color: #555;vertical-align: middle;background-color: #fcfcfc;border: solid 1px #ccc;border-bottom-color: #bbb;border-radius: 3px;box-shadow: inset 0 -1px 0 #bbb}.codehilite{background: #ffffff}.codehilite .c{color: #999988;font-style: italic}.codehilite .err{color: #a61717;background-color: #e3d2d2}.codehilite .k{color: #000000;font-weight: bold}.codehilite .o{color: #000000;font-weight: bold}.codehilite .cm{color: #999988;font-style: italic}.codehilite .cp{color: #999999;font-weight: bold}.codehilite .c1{color: #999988;font-style: italic}.codehilite .cs{color: #999999;font-weight: bold;font-style: italic}.codehilite .gd{color: #000000;background-color: #ffdddd}.codehilite .gd .x{color: #000000;background-color: #ffaaaa}.codehilite .ge{color: #000000;font-style: italic}.codehilite .gr{color: #aa0000}.codehilite .gh{color: #999999}.codehilite .gi{color: #000000;background-color: #ddffdd}.codehilite .gi .x{color: #000000;background-color: #aaffaa}.codehilite .go{color: #888888}.codehilite .gp{color: #555555}.codehilite .gs{font-weight: bold}.codehilite .gu{color: #aaaaaa}.codehilite .gt{color: #aa0000}.codehilite .kc{color: #000000;font-weight: bold}.codehilite .kd{color: #000000;font-weight: bold}.codehilite .kp{color: #000000;font-weight: bold}.codehilite .kr{color: #000000;font-weight: bold}.codehilite .kt{color: #445588;font-weight: bold}.codehilite .m{color: #009999}.codehilite .s{color: #d14}.codehilite .na{color: #008080}.codehilite .nb{color: #0086B3}.codehilite .nc{color: #445588;font-weight: bold}.codehilite .no{color: #008080}.codehilite .ni{color: #800080}.codehilite .ne{color: #990000;font-weight: bold}.codehilite .nf{color: #990000;font-weight: bold}.codehilite .nn{color: #555555}.codehilite .nt{color: #000080}.codehilite .nv{color: #008080}.codehilite .ow{color: #000000;font-weight: bold}.codehilite .w{color: #bbbbbb}.codehilite .mf{color: #009999}.codehilite .mh{color: #009999}.codehilite .mi{color: #009999}.codehilite .mo{color: #009999}.codehilite .sb{color: #d14}.codehilite .sc{color: #d14}.codehilite .sd{color: #d14}.codehilite .s2{color: #d14}.codehilite .se{color: #d14}.codehilite .sh{color: #d14}.codehilite .si{color: #d14}.codehilite .sx{color: #d14}.codehilite .sr{color: #009926}.codehilite .s1{color: #d14}.codehilite .ss{color: #990073}.codehilite .bp{color: #999999}.codehilite .vc{color: #008080}.codehilite .vg{color: #008080}.codehilite .vi{color: #008080}.codehilite .il{color: #009999}
+    </style>
+    <style type="text/css">
+      .markdown-body hr{background:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC")}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="markup">
+        <article id="content" class="markdown-body">
+          <h2>VINS paper Overview</h2>
+<h3>Notations and frame definitions</h3>
+<p><mathjax>$(\cdot)^b$</mathjax>: body(IMU) frame<br>
+<mathjax>$(\cdot)^c$</mathjax>: camera frame<br>
+<mathjax>$(\cdot)_k$</mathjax>: discrete time k<br>
+<mathjax>$(\cdot)_t$</mathjax>: continuous time t<br></p>
+<p><mathjax>$p$</mathjax>: position<br>
+<mathjax>$v$</mathjax>: velocity<br>
+<mathjax>$q$</mathjax>: rotation<br>
+<mathjax>$a$</mathjax>: acceleration<br>
+<mathjax>$\omega$</mathjax>: angular velocity<br>
+<mathjax>$b_a$</mathjax>: accelerometer bias<br>
+<mathjax>$b_\omega$</mathjax>: gyroscope bias<br>
+<mathjax>$n$</mathjax>: noise<br></p>
+<p><mathjax>$p^w_b$</mathjax>: translation from the body frame to the world frame<br>
+<mathjax>$q^w_b$</mathjax>: rotation from the body frame to the world frame<br>
+<mathjax>$b_k$</mathjax>: the body frame while taking the <mathjax>$k^th$</mathjax> image<br>
+<mathjax>$c_k$</mathjax>: the camera frame while taking the <mathjax>$k^th$</mathjax> image<br></p>
+<p><mathjax>$\otimes$</mathjax>: the mulitiplication between two quaternions<br>
+<mathjax>$\hat{(\cdot)}$</mathjax>: noisy measurement or estimate of a certain quantity<br>
+<mathjax>$s$</mathjax>: scaling parameter</p>
+<h3>Measurement Preprocessing</h3>
+<p>For visual measurements</p>
+<ul>
+<li>track features between consecutive frames</li>
+<li>detect new features in the latest frame</li>
+</ul>
+<p>For IMU measurements</p>
+<ul>
+<li>pre-integrate between two consecutive frames<br>
+IMU measurements are affected by both bias and noise<br>
+take bias into account in the pre-integration process</li>
+</ul>
+<h5><em>A. Vision Processing Front-end</em></h5>
+<ul>
+<li>Features are tracked by the KLT sparse optical flow algorithm</li>
+<li>100-300 features in each image</li>
+<li>2D features are firstly undistorted</li>
+<li>outlier rejection using RANSAC with fundamental matrix model</li>
+<li>projected to a unit sphere</li>
+</ul>
+<p>Two criteria for keyframe selection</p>
+<ul>
+<li>average parallax of tracked feature between the current frame and the latest keyframe is beyond a certain threshold</li>
+<li>tracking quality, number of tracked features below a certain threshold</li>
+</ul>
+<h5><em>B. IMU Pre-integration</em></h5>
+<p>State Estimation其实是想估计任意时刻的全局坐标系下的位置和姿态, 也就是论文中的<mathjax>$p^\omega_{b_k}$</mathjax>,<mathjax>$v^\omega_{b_k}$</mathjax>,<mathjax>$q^\omega_{b_k}$</mathjax>，分别对应位置,速度,旋转四元数</p>
+<p>即当前时刻的状态可以通过上一时刻状态来迭代求得. 但这里有个问题在于积分中有<mathjax>$R^\omega_t$</mathjax>,<mathjax>$q^{b_k}_t$</mathjax>, 它是t时刻在world系下的旋转, 是一个要估计的量, 后面估计的过程中, 这个量会被不断的更新改变, 那么每变一次就得重新积分. 把上次都乘一个旋转<mathjax>$R^{b_k}_\omega$</mathjax> 转到<mathjax>$b_k$</mathjax>系下.<br>
+把<mathjax>$R^\omega_t$</mathjax>从积分中抽出来, 这样不管<mathjax>$R^\omega_{b_k}$</mathjax>怎么变, 我们只需要一些简单的旋转矩阵相乘就能得到世界坐标系下的状态量. <br></p>
+<p>直观的理解是: 位置,姿态,速度等, 它们的绝对量是跟参考坐标系的选取有关的, 如果参考坐标系移动了, 那么这些量也会跟着改变, 但某两个时刻之间的相对量(<mathjax>$p^{b_k}_{b_k+1}$</mathjax>,<mathjax>$v^{b_k}_{b_k+1}$</mathjax>,<mathjax>$q^{b_k}_{b_k+1}$</mathjax>)是跟坐标选取无关的, 不管在哪个坐标系下看, 相对变化是不变的, 所以可以事先把这些不变的量求出来. <mathjax>$p^\omega_{b_k}$</mathjax>,<mathjax>$q^\omega_{b_k}$</mathjax>,这些状态发生改变后, 可以通过矩阵乘法很容易的把相对量转成绝对量. </p>
+<p>更加简单的理解: 把相邻两帧图像之间的一段时间的IMU预先积分起来, 得到两帧之间的IMU相对运动, 也就是把多个IMU观测变成一个运动观测, 它是不随某一时刻的绝对位姿改变而发生改变的.</p>
+<p>三个结果：<br>
+<mathjax>$\hat{\alpha}^{b_k}_{b_k+1}$</mathjax>: body frame下，k帧到k+1帧position变化量的估计值(noisy measurement or estimate of a certain quantity)<br>
+<mathjax>$\hat{\beta}^{b_k}_{b_k+1}$</mathjax>: body frame下，k帧到k+1帧velocity变化量的估计值<br>
+<mathjax>$\hat{\gamma}^{b_k}_{b_k+1}$</mathjax>: body frame下，k帧到k+1帧orientation变化量的估计值<br>
+其实还有两个bias<br>
+IMU预积分的结果在后面优化的时候是作为约束<br></p>
+<h3>Estimator Initialization</h3>
+<p>to solve the scaling parameter</p>
+<ul>
+<li>Highly nonlinear system<br>
+Scale is not directly observable<br>
+Stationary initial condition? inapplicable in real-world application<br>
+Loosely-coupled sensor fusion method to get initial values<br>
+Bootstrap the vision-only SLAM by 8-pts or 5-pts algorithms, or estimating Homogeneous matrices. Then align metric IMU pre-integration with the Visual-only SFM results. To recover scale,gravity velocity even bias.<br>
+Ignore accelerometer bias terms in the initial step.<br> 
+Due to large magnitude of the gravity vector and short during of initialization, the bias terms are hard to be observed </li>
+</ul>
+<h5><em>A. Sliding Window Vision-only SFM</em></h5>
+<p>to estimate a graph of up-to-scale camera pose and feature positions</p>
+<p>maintain a sliding window<br></p>
+<p>1.check feature correspondences between the latest frame and all previous frames<br></p>
+<p>if find stable feature tracking and sufficient parallax between the latest frame and any other frames in the window<br></p>
+<p>Recover the relative rotation and up-to-scale translation between these two frames using 5-pts algorithm.<br></p>
+<p>Otherwise, keep the latest frame in the window and wait for new frame<br></p>
+<p>2.If 5-pts algorithm success, arbitrarily set the scale and triangulate all features in these two frames.<br></p>
+<p>3.Based on these triangulated features, performe a PnP method to estimate poses of all other frames in the window.<br></p>
+<p>4.A global full bundle adjustment to minimize the total reprojection error of  all feature observations</p>
+<p><mathjax>$$q^{c_0}_{b_k} = q^{c_0}_{c_k} \otimes (q^b_c)^{-1}$$</mathjax>
+<mathjax>$$s\bar P^{c_0}_{b_k} = s\bar P^{c_0}_{c_k} - R^{c_0}_{b_k}p^b_c$$</mathjax></p>
+<p><mathjax>$(\cdot)^{c_0}$</mathjax>: the first camera frame，相机第一帧的坐标系，也作为SFM的参考坐标系<br>
+下面的frame指的是坐标系，不是帧<br>
+<mathjax>$q^{c_0}_{b_k}$</mathjax>: 相机第一帧frame 到 第k帧body(IMU)frame 的旋转<br>
+<mathjax>$q^{c_0}_{c_k}$</mathjax>: 相机第一帧frame 到 第k帧camera frame 的旋转<br>
+<mathjax>$q^b_c$</mathjax>: 按之前的说明应该是下标到上标的旋转（即camera frame 到 IMU frame的旋转），但是如果这样理解再对<mathjax>$q^b_c$</mathjax>取逆就解释不通了，所以感觉应该是上标到下标的旋转，即IMU frame 到 camera frame的旋转？？？？</p>
+<h5><em>B. Visual-Inertial Alignment</em><br></h5>
+<p>1) Gyroscope Bias Calibration<br>
+将预积分的结果作为约束，由下面的cost function求出新的gyro bias <mathjax>$b_\omega$</mathjax>，再用新的<mathjax>$b_\omega$</mathjax> re-propagate 预积分项<br>
+<mathjax>$$\min_{\delta b_\omega}\sum_{k\in \mathcal B}\left\|{q^{c_o}_{b_k+1}}^{-1}\otimes q^{c_o}_{b_k}\otimes \gamma^{b_k}_{b_k+1}\right\|^2$$</mathjax>
+<mathjax>$$\gamma^{b_k}_{b_k+1}\approx \hat\gamma^{b_k}_{b_k+1}\otimes \begin{bmatrix} 1 \\ \frac{1}{2}J^\gamma_{b_\omega}\delta b_\omega \end{bmatrix}$$</mathjax></p>
+<p><mathjax>$\mathcal B$</mathjax> indexs all frames in the window</p>
+<p>2) Veloity, Gravit Vector and Metric Scale Initialization<br>
+由运动方程，IMU和Camera reference之间的转换关系，确定观测方程，得到最小二乘问题，求解<br></p>
+<p>3) Gravity Refinement <br>
+refine teh gravity vector by constraining the magnitude
+为了求世界坐标和camera坐标的关系？？？？<br></p>
+<p>4) Completing Initialization<br>
+Translational components from the visual SFM will be scaled to metric units and fed for a tightly-coupled monocular VIO</p>
+<h3>Tightly-Coupled Monocular VIO</h3>
+<h5><em>A) Formulation</em><br></h5>
+<p>visual-inertial bundle adjustment formulation
+minimize the sum of prior and the Mahalanobis norm of all measurement residuals to obtain a maximum posteriori estimation<br>
+<mathjax>$$\min_\chi \lbrace\|r_p-H_p\chi\|^2 + \sum_{k\in \mathcal B}\|r_{\mathcal B}(\hat z^{b_k}_{b_k+1},\chi)\|^2_{P^{b_k}_{b_k+1}} + \sum_{(l,j)\in \mathcal C}\rho(\|r_{\mathcal C}(\hat z^{c_j}_l,\chi)\|^2_{P^{c_j}_l})\rbrace$$</mathjax></p>
+<p>Huber norm is defined as:<br>
+<mathjax>$$\rho (s) = \begin{cases} 1 &amp; \text{s$\ge$1} \\ 2\sqrt s - 1 &amp; \text {s$\lt$1}\end{cases}$$</mathjax></p>
+<p>由于误匹配等原因，某个误差项会给出错误的数据，结果就是把一条不该出现的边加到图里去了，而优化算法并不能识别这是错误的数据，它会把所有数据当作误差来处理，也会优化这条误差很大的边，并试图调整这条边所连接节点的估计值，由于这条错误的边误差很大，会抹平其他正确的边的影响，所以用核函数来确保误差不会大的太多</p>
+<p><mathjax>$r_{\mathcal B}(\hat z^{b_k}_{b_k+1},\chi)$</mathjax>: residuals for IMU measurements<br>
+<mathjax>$r_{\mathcal C}(\hat z^{c_j}_l,\chi)$</mathjax>: residual for visual measurements<br>
+<mathjax>$\lbrace r_\rho,H_\rho\rbrace$</mathjax>: prior information from marginalization<br></p>
+<h5><em>B) IMU Measurement Residual</em><br></h5>
+<h5><em>C) Visual Measurement Residual</em><br></h5>
+<p>Define the camera measurement residual on a unit sphere<br></p>
+<h5><em>D) Marginalization</em><br></h5>
+<p>To bound the computational complexity<br>
+Selectively marginalize out IMU states and features from the sliding window<br>
+Convert measurements corresponding to marginalized states into a prior????<br>
+把丢弃的帧的IMU数据保存下来当作先验信息？？？？<br></p>
+<h5><em>E) Motion-only Visual-Inertial Bundle Adjustment for Camera-Rate State Estimation</em><br></h5>
+<p>Only optimize the poses and velocities of a fixed number of latest IMU states<br>
+Treat feature depth, extrinsic parameters, bias, and old IMU states as constant values<br></p>
+<h5><em>F) IMU forward Propagation for IMU-Rate State Estimation</em></h5>
+<p>Propagate the latest VIO estimate with the set of most recent IMU measurements to achieve IMU-rate performance<br>
+The high-frequency state estimates can be utilized as state feedback for closed loop closure<br></p>
+<h5><em>G) Failure Detection and Recovery</em><br></h5>
+<ul>
+<li>The number of features being tracked in the latest frame is less than a certain threshold<br></li>
+<li>Large discontinuity in position or rotation between last two estimator outputs<br></li>
+<li>Large change in bias or extrinsic parameters estimation<br></li>
+</ul>
+<h3>Relocalization</h3>
+<p>Drifts occur in global 3D position(x,y,z) and the rotation around the gravity direction(yaw)</p>
+<h5><em>A. Loop Detection</em></h5>
+<p>DBoW2<br>
+Descriptors are treated as the visual word to query the visual database<br>
+Keep all BRIEF descriptors for feature retrieving<br>
+Discard raw image</p>
+<h5><em>B. Feature Retrieval</em></h5>
+<p>The connection between the local sliding window and the loop closure candidate is established by retrieving feature correspondences<br>
+Correspondences are found by BRIEF descriptor matching<br>
+Two-step geometric outlier rejection</p>
+<h5><em>C. Tightly-Coupled Relocalization</em></h5>
+<p>relocalization将滑窗和位姿图对应？？？？<br>
+Optimize the sliding window</p>
+<h3>Global Pose Graph Optimization</h3>
+<p>Utilize the relocalization results, to ensure the set of past poses are registered into a globally consistent configuration<br>
+Visual-inertial setup redeners roll and pitch angles fully observable<br>
+Only perform 4-DOF pose graph optimization(x,y,z,yaw)</p>
+<h5><em>A. Adding Keyframes into the Pose Graph</em></h5>
+<p>When a keyframe is marginalized out from the sliding window, it will be added to pose graph.<br>
+This keyframe serves as a vertex in the pose graph and it connects with other vertexs by two types of edges<br></p>
+<p>1) Sequential Edge<br>
+represents the relative transformation between two keyframes in the local sliding window, which value is taken directly from VIO<br></p>
+<p>2) Loop Closure Edge<br>
+connects the marginalized keyframe with the loop closure frame</p>
+<p>The value of the loop closure edge is obtained using results from relocalization</p>
+<h5><em>B. 4-DOF Pose Graph Optimization</em></h5>
+<p>The whole graph of sequential edges and loop closure edges are optimized by minimizing the cost function</p>
+<p>Pose graph optimization and relocalization runs asynchronously in two separate threads</p>
+<h5><em>C. Pose Graph Management</em></h5>
+<p>Downsample process to maintain the pose graph database to a limited size</p>
+<p>All keyframes with loop closure constraints will be kept,while other keyframes that are either too close or have very similar orientations to its neighbors may be removed</p>
+        </article>
+      </div>
+    </div>
+  </body>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          displayMath: [ ['$$', '$$'], ["\\[", "\\]"] ],
+          processEscapes: true
+        },
+        TeX: {
+          equationNumbers: {
+            autoNumber: 'AMS'
+          }
+        },
+        "HTML-CSS": {
+          imageFont: null
+        }
+      });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.1-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</html>
