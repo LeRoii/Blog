@@ -446,6 +446,10 @@ $r_{\mathcal B}(\hat z^{b_k}_{b_k+1},\chi)$: residuals for IMU measurements<br>
 $r_{\mathcal C}(\hat z^{c_j}_l,\chi)$: residual for visual measurements<br>
 $\lbrace r_\rho,H_\rho\rbrace$: prior information from marginalization<br>
 
+首先，为什么需要先验残差？由于使用的是Sliding Window技术，相比于graph optimization(full smooth)，他并不优化所有frame，仅仅优化滑动窗口中的变量，这个时候对于当前滑动窗口之前的frame就很tricky了，如果直接丢掉，相当于丢失了信息<br>
+
+我们添加对滑动窗口中IMU和视觉的残差，但是，这些对应的变量实际上跟之前被margin掉的变量是有约束的，代码中last_marginalization_parameter_blocks就是保存的这些跟当前窗口有约束的变量，也就是[heyijia博客](https://blog.csdn.net/heyijia0327/article/details/53707261)中对应的Xb变量，在代码中化成先验残差，来约束
+
 ##### *B) IMU Measurement Residual*<br>
 * 将频率较高的多个IMU测量值转换为单个测量项。新得到测量项可以非线性迭代中重新进行线性
 
